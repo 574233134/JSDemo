@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息框</title>
+</head>
+<body>
+   <p>点击按钮查看警告框。</p>
+   <button onclick="alertSample()">显示警告框</button><br/>
+   <p>点击按钮查看带换行的警告框。</p>
+   <button onclick="alertWithreturn()">显示带换行的警告框</button><br/>
+   <p>点击按钮查看确认框。</p>
+   <input type="button" onclick="confirmBox()" value="确认框"><br/>
+   <p>点击按钮查看输入的对话框。</p>
+   <button onclick="comunicate()">点我</button>
+   <p id="demo"></p>
+</body>
+</html>
+<script>
+    function alertSample() {
+        alert("我是一个简单的警告框")
+    }
+    function alertWithreturn() {
+        alert("Hello\nHow are you?")
+    }
+    function confirmBox() {
+        confirm("确定要执行操作？")
+    }
+    function comunicate(){
+        var x;
+        var person=prompt("请输入你的名字","Harry Potter");
+        if (person!=null && person!=""){
+            x="你好 " + person + "! 今天感觉如何?";
+            document.getElementById("demo").innerHTML=x;
+        }
+    }
+</script>

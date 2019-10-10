@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单计时相关</title>
+</head>
+<body>
+<p>点击按钮，在等待 3 秒后弹出 "Hello"。</p>
+<button onclick="myfun()">点我</button><br/>
+<p>--------分割线--------</p>
+<form>
+    <input type="button" onclick="timedText()" value="显示文本时间" >
+    <input type="text" id="txt" >
+</form>
+<p>点击上面的按钮，输出的文本将告诉你2秒，4秒，6秒已经过去了。</p>
+</body>
+<script>
+    function myfun() {
+        setTimeout(function() {alert('hello')},3000);
+    }
+    function timedText() {
+        var x = document.getElementById("txt");
+        var t1 = setTimeout(function () {
+            x.value = "2秒"
+        },2000);
+        var t2 = setTimeout(function () {
+            x.value = "4秒"
+        },4000);
+        var t3=setTimeout(function(){
+            x.value="6秒"
+        },6000);
+    }
+</script>
+</html>

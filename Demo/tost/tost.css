@@ -1,0 +1,48 @@
+.tip-message-wrap{
+    position: fixed;
+    text-align: center;
+    top:30%;
+    left: 0;
+    z-index: 99999999;
+    width: 100%;
+}
+
+.tip-message {
+    -webkit-animation-name: fadeInAndFadeOut;
+    animation-name: fadeInAndFadeOut;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+    margin: 0 auto;
+    font-size: 13px;
+    color: white;
+    border-radius: 3px;
+    line-height: 2;
+    padding: 8px 30px;
+    background-color: rgba(0,0,0,.7);
+    display: inline-block;
+}
+
+@keyframes fadeInAndFadeOut {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+    80% {
+        opacity: 1;
+        /*transform: scale(1.1);*/
+    }
+    100% {
+        opacity: 1;
+    }
+}

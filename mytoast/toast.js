@@ -21,7 +21,7 @@
     // loadStyles('animate.css');
 
     //显示提示信息    toast
-    $.fn.toast = function(options){
+    $.fn.toast = function(options,type){
         var $this = $(this);
         var _this = this;
         return this.each(function(){
@@ -30,14 +30,26 @@
             });
             var top = '';		//bottom的位置
             var translateInfo = ''; 	//居中和不居中时的tarnslate
-
+            var background = "rgba(7,17,27,0.66)"
+            if (type == 0) //success
+            {
+                background = "rgba(0,139,0,0.66)"
+            }
+            else if (type == 1) // fail
+            {
+                background = "rgba(255,0,0,0.66)"
+            }
+            else if (type == 2) // warning
+            {
+                background = "rgba(255,165,0,0.66)"
+            }
             var box = '';   //消息元素
             var defaults = {
-                position:  			  "fixed", 				//不是body的话就absolute
+                position:  			  "absolute", 				//不是body的话就absolute
                 animateIn:  		  "fadeIn",		//进入的动画
                 animateOut: 		  "fadeOut",				//结束的动画
-                padding:              "10px 20px",              //padding
-                background:           "rgba(7,17,27,0.66)",     //背景色
+                padding:              "30px 20px",              //padding
+                background:           background,     //背景色
                 borderRadius:         "6px",                    //圆角
                 duration:             3000,                     //定时器时间
                 animateDuration: 	  500, 						//执行动画时间
@@ -72,7 +84,7 @@
                     "border-radius":opt.borderRadius,
                     "color":opt.color,
                     "top":top,
-                    "left":'50%',
+                    // "left":'50%',
                     "z-index":opt.zIndex,
                     "-webkit-transform":'translate3d(-50%,-50%,0)',
                     "-moz-transform":'translate3d(-50%,-50%,0)',

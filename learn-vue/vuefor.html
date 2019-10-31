@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue v-for</title>
+    <script src="vue.js"></script>
+    <!--教程地址：https://cn.vuejs.org/v2/guide/list.html-->
+</head>
+<body>
+<a href="vforincomponent.html" target="_blank">在组件中使用v-for</a>
+<h3>v-for 可以用in 关键字  也可以使用of 关键字</h3>
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{ todo.text }}
+        </li>
+    </ol>
+    <ul>
+        <li v-for="(todo, index) of todos">
+            {{ parentMessage }} - {{ index }} - {{ todo.text }}
+        </li>
+    </ul>
+</div>
+
+
+
+<!--vue-for 里面使用对象-->
+<h3>v-for 里面使用对象</h3>
+<div id="v-for-object">
+    <ul class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+    <div v-for="(value,name,index) in object">
+        {{index}}.{{ name }}: {{ value }}
+    </div>
+</div>
+<p>注：为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性</p>
+<p>注: 注意数组的变异方法与非变异方法的区别</p>
+
+
+
+
+<h3>注意事项</h3>
+<p>由于 JavaScript 的限制，Vue <span style="color: red">不能</span>检测以下数组的变动：</p>
+<ul>
+    <li>当你利用索引直接设置一个数组项时，例如：<span style="color: chocolate">vm.items[indexOfItem] = newValue</span></li>
+    <li>当你修改数组的长度时，例如：<span style="color: chocolate">vm.items.length = newLength</span></li>
+</ul>
+<p>为了解决第一类问题，以下方式都可以实现和 <span style="color: chocolate">vm.items[indexOfItem] = newValue</span> 相同的效果，同时也将在响应式系统内触发状态更新：</p>
+<div style="height: 100px; background-color: lightgray;padding-left: 20px;padding-top: 5px;width: 1000px">
+    <ul>
+        <li>Vue.set(vm.items, indexOfItem, newValue)</li>
+        <li>vm.items.splice(indexOfItem, 1, newValue)</li>
+        <li>vm.$set(vm.items, indexOfItem, newValue)</li>
+    </ul>
+</div>
+<p>为了解决第二类问题，可以使用 splice</p>
+<div style="height: 40px; background-color: lightgray;padding-left: 20px;padding-top: 5px;width: 1000px">
+    vm.items.splice(newLength)
+</div>
+
+
+
+<h3>对象变更检测注意事项</h3>
+<p style="color: red">注：对于已经创建的实例，Vue 不允许动态添加根级别的响应式属性。但是，可以使用 Vue.set(object, propertyName, value) 方法向嵌套对象添加响应式属性</p>
+<div id="demo">
+    <ul>
+        <li v-for="(value,name)  in userProfile">
+            {{ name }}: {{ value }}
+        </li>
+    </ul>
+</div>
+
+
+
+<h3>显示过滤/排序后的结果</h3>
+<div id="sortnumber">
+    <p> 原数组为[1,2,3,4,5]</p>
+    <p> 过滤(求偶数)后的结果</p>
+    <li v-for="n in evenNumbers">{{ n }}</li>
+
+    <p>在计算属性不适用的情况下 (例如，在嵌套 v-for 循环中) 你可以使用一个方法：</p>
+    <li v-for="n in even(numbers)">{{ n }}</li>
+
+    <h3>在 template 上使用 v-for</h3>
+    <ul>
+        <template v-for="n in 5">
+            <li>{{ n }}</li>
+        </template>
+    </ul>
+
+    <h3>v-for 与 v-if 一起使用(不推荐在同一元素上使用 v-if 和 v-for)</h3>
+    <ul v-if="numbers.length">
+        <li v-for="number in numbers">
+            {{ number }}
+        </li>
+    </ul>
+    <p v-else>No numbers left!</p>
+</div>
+
+</body>
+<script>
+    // 在控制台里，输入 app4.todos.push({ text: '新项目' })，会发现列表最后添加了一个新项目。
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            parentMessage: 'Parent',
+            todos: [
+                { text: '学习 JavaScript' },
+                { text: '学习 Vue' },
+                { text: '整个牛项目' }
+            ]
+        }
+    })
+
+    // v-for 里面使用对象
+    var vm = new Vue({
+        el: '#v-for-object',
+        data: {
+            object: {
+                title: 'How to do lists in Vue',
+                author: 'Jane Doe',
+                publishedAt: '2016-04-10'
+            }
+        }
+    })
+
+    var vm2 = new Vue({
+        el:"#demo",
+        data: {
+            userProfile: {
+                name: 'Anika'
+            }
+        }
+    })
+    // 一次更改vm2 多个属性
+    vm2.userProfile = Object.assign({}, vm.userProfile, {
+        age: 27,
+        favoriteColor: 'Vue Green'
+    })
+
+
+    var sortnum = new Vue({
+        el:"#sortnumber",
+        data:{
+            numbers: [ 1, 2, 3, 4, 5 ]
+        },
+        computed:{
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        },
+        methods: {
+            even: function (numbers) {
+                return numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        }
+    })
+
+</script>
+</html>

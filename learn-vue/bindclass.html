@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定 class</title>
+    <script src="vue.js"></script>
+    <script>
+        // 声明组件
+        Vue.component('my-component', {
+            template: '<p class="foo bar">Hi</p>'
+        })
+    </script>
+</head>
+<body>
+<!--可以传给 v-bind:class 一个对象，以动态地切换 class-->
+<h2 style="color: red">在控制台更改vm.error、vm.hasError、vm.isActive、vm.classObject["text-danger"]的值查看div的class变化</h2>
+<div id="bindclass" class="" v-bind:class="{ active: isActive, 'text-danger': hasError }">
+    <div v-bind:class="classObject"></div>
+    <div v-bind:class="classObject2"></div>
+</div>
+
+<!--传给v-bind:class 一个数组，应用一个class 列表 -->
+<div id="bindclass2">
+    <div v-bind:class="[activeClass, errorClass]"></div>
+    <!--数组里面可以嵌套对象-->
+    <div v-bind:class="[{ active: isActive }, errorClass]"></div>
+    <!--当在一个自定义组件上使用 class 属性时，这些 class 将被添加到该组件的根元素上面。-->
+    <!--这个元素上已经存在的 class 不会被覆盖。-->
+    <my-component class="baz boo"></my-component>
+    <!--HTML 将被渲染为: <p class="foo bar baz boo">Hi</p>-->
+</div>
+</body>
+<script>
+
+//绑定对象
+var vm = new Vue({
+    el:"#bindclass",
+    data:{
+        isActive: true,
+        hasError: false,
+        error:null,
+        classObject: {
+            active: true,
+            'text-danger': false
+        }
+    },
+    computed: {
+        classObject2: function () {
+            return {
+                active: this.isActive && !this.error ,
+                'text-danger': this.error && this.error.type === 'fatal'
+            }
+        }
+    }
+})
+
+// 绑定数组
+var vm2 = new Vue({
+    el:"#bindclass2",
+    data: {
+        activeClass:'active',
+        errorClass: 'text-danger',
+        isActive: true
+    }
+})
+
+</script>
+</html>

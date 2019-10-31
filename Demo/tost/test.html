@@ -6,8 +6,31 @@
     <link rel="stylesheet" type="text/css" href="tost.css">
 
 </head>
-<body id="main">
-<script src="tost.js" type="text/javascript"></script>
-<button onclick="toast('fjnvjsdnbifibisnfb \n gsvfgvf',1)">点击</button>
+<body>
+<div id="dvCBs">
+    <input type="checkbox" name="cb" value="1" />cb1
+    <br /><input type="checkbox" name="cb" value="2" />cb2
+    <br /><input type="checkbox" name="cb" value="3" />cb3
+</div>
+<script>
+    var dv = document.getElementById('dvCBs'), cbs = dv.getElementsByTagName('input');
+    dv.onclick = function (e) {
+        e = e || window.event;
+        var o = e.target || e.srcElement;
+        if (o.type == 'checkbox') {
+            var vs = '';
+            for (var i = 0; i < cbs.length; i++)
+                if (cbs[i].checked) vs += ',' + cbs[i].value;
+            document.cookie = 'vs=' + vs.substring(1);//存储选中的checkbook的值
+        }
+    }
+    var m = /(^| |;)vs=([^;]+)/.exec(document.cookie);
+    if (m) {//cookie中有值，初始化勾选状态
+        var arr = m[2].split(',');
+        for(var j=0;j<arr.length;j++)
+            for(var i=0;i<cbs.length;i++)
+                if (cbs[i].value == arr[j]) { cbs[i].checked = true; break;}
+    }
+</script>
 </body>
 </html>

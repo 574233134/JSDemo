@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>在组件上使用 v-for</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<p style="color: red;">注:2.2.0+ 的版本里，当在组件上使用 v-for 时，key 现在是必须的。</p>
+<div id="todo-list-example">
+    <form v-on:submit.prevent="addNewTodo">
+        <label for="new-todo">Add a todo</label>
+        <input
+                v-model="newTodoText"
+                id="new-todo"
+                placeholder="E.g. Feed the cat"
+        >
+        <button>Add</button>
+    </form>
+    <ul>
+        <li
+                is="todo-item"
+                v-for="(todo, index) in todos"
+                v-bind:key="todo.id"
+                v-bind:title="todo.title"
+                v-on:remove="todos.splice(index, 1)"
+        ></li>
+    </ul>
+</div>
+<!--v-on:remove="todos.splice(index, 1)"的意思是绑定一个自定义事件remove:删除这个li对应的数据。目前来看,没有触发事件的代码,触发的格式为this.$emit('remove')-->
+<!--arrayObject.splice(index,howmany,item1,.....,itemX)-->
+<!--index：必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。-->
+<!--howmany:必需。要删除的项目数量。如果设置为 0，则不会删除项目。-->
+<!--item1, ..., itemX: 可选。向数组添加的新项目。-->
+</body>
+<script>
+    Vue.component('todo-item', {
+        template: '\
+    <li>\
+      {{ title }}\
+      <button v-on:click="$emit(\'remove\')">Remove</button>\
+    </li>\
+  ',
+        props: ['title']
+    })
+
+    new Vue({
+        el: '#todo-list-example',
+        data: {
+            newTodoText: '',
+            todos: [
+                {
+                    id: 1,
+                    title: 'Do the dishes',
+                },
+                {
+                    id: 2,
+                    title: 'Take out the trash',
+                },
+                {
+                    id: 3,
+                    title: 'Mow the lawn'
+                }
+            ],
+            nextTodoId: 4
+        },
+        methods: {
+            addNewTodo: function () {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText
+                })
+                this.newTodoText = ''
+            }
+        }
+    })
+</script>
+
+</html>

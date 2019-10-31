@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插值</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="insertvalue">
+    <ul>
+        <!--数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值：-->
+        <li>{{msg}}</li>
+        <li>Using mustaches: {{htmlmsg}}</li>
+        <li>Using v-html: <span v-html="htmlmsg"></span></li>
+    </ul>
+</div>
+<script>
+    var insertvalue = new Vue({
+        el:'#insertvalue',
+        data:{
+            msg:'纯文本插入',
+            htmlmsg:'<span style="color: red">This should be red html</span>'
+        }
+    })
+</script>
+</body>
+</html>

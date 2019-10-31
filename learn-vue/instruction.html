@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指令</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<!--参数:一些指令能够接收一个“参数”，在指令名称之后以冒号表示。-->
+<div id="app-5">
+    <a v-bind:href="url">链接</a>
+    <!--(v-bind:href 可简写为 :href)-->
+    <a :href="url">链接</a>
+    <button v-on:click="changeurl">更改链接</button>
+</div>
+</body>
+<script>
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            url: 'http://www.baidu.com'
+        },
+        methods: {
+            changeurl: function () {
+                alert('url 从百度改为京东')
+                this.url = 'http://www.jd.com'
+            }
+        }
+    })
+</script>
+</html>

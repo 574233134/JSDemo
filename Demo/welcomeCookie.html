@@ -24,7 +24,7 @@
             }
         }
         function checkCookie(){
-            // delCookie("username");
+             delCookie("username");
             var user=getCookie("username");
             if (user&&user!=""){
                 alert("欢迎 " + user + " 再次访问");
@@ -32,7 +32,7 @@
             else {
                 user = prompt("请输入你的名字:","");
                 if (user!="" && user!=null){
-                    setCookie("username",user,30);
+                    setCookie("username",user,0);
                 }
             }
         }

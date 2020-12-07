@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插槽</title>
+    <script src="../vue.js"></script>
+    <script>
+
+        // 插槽内容
+        Vue.component('navigation-link',{
+            props:['url'],
+            template: `
+            <a v-bind:href="url" class="nav-link">
+                <slot></slot>
+            </a>
+            `
+        });
+
+        Vue.component('submit-button',{
+            template: `
+            <button type="submit">
+                <slot>Submit</slot>
+            </button>
+            `
+        });
+
+        Vue.component('base-layout',{
+            template:`
+            <div class="container">
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+</div>
+            `
+        });
+        Vue.component('current-user',{
+            data: function () {
+                return {
+                    user: {'lastName':'梦珂','firstName':'李'}
+                }
+            },
+            template:`
+            <span>
+                <slot v-bind:user="user">
+                {{ user.lastName }}
+                </slot>
+            </span>
+            `
+        });
+        Vue.component('base-layout-two', {
+            template: `
+                <div>
+                    <header >
+                        <slot name="header"></slot>\
+                    </header>
+                </div>
+            `
+        });
+
+        // 我们为每个todo 准备了一个插槽，将todo 对象作为一个插槽的 prop 传入。
+        Vue.component('todo-list', {
+            data: function () {
+                return {
+                    filteredTodos:[
+                        {id:0,isComplete:0,text:'todo0 not complete'},
+                        {id:1,isComplete:1,text:'todo1 complete'},
+                        {id:2,isComplete:0,text:'todo2 not complete'},
+                        {id:3,isComplete:1,text:'todo3 complete'}
+                    ]
+                }
+            },
+            template: `
+              <ul>
+                <li
+                 v-for="todo in filteredTodos"
+                 v-bind:key="todo.id"
+                 >
+                  <slot name="todo" v-bind:todo="todo">
+                    {{ todo.text }}
+                  </slot>
+                </li>
+              </ul>
+            `
+        })
+    </script>
+</head>
+<body>
+<div id="vm">
+    <!--当组件渲染的时候，<slot></slot> 将会被替换为“Your Profile”。-->
+    <!--插槽内可以包含任何模板代码，包括 HTML：-->
+    <h3>插槽内容</h3>
+    <navigation-link url="/profile">
+        如果 navigation-link 没有包含一个 slot 元素，则该组件起始标签和结束标签之间的任何内容都会被抛弃
+    </navigation-link>
+    <h3>编译作用域</h3>
+    <navigation-link url="/profile">
+        Clicking here will send you to: {{ url }}
+        <!--
+        这里的 `url` 会是 undefined，因为 "/profile" 是
+        _传递给_ <navigation-link> 的而不是
+        在 <navigation-link> 组件*内部*定义的。
+        -->
+    </navigation-link>
+    <p>父级模板里的所有内容都是在父级作用域中编译的；子模板里的所有内容都是在子作用域中编译的。</p>
+
+
+
+    <h3>后备内容（slot默认值）</h3>
+    <submit-button></submit-button>
+    <submit-button>
+        Save
+    </submit-button>
+
+
+
+    <h3>具名插槽（默认名称未default）</h3>
+    <base-layout>
+        <template v-slot:header>
+            <h1>Here might be a page title</h1>
+        </template>
+
+        <p>A paragraph for the main content.</p>
+        <p>And another one.</p>
+
+        <template v-slot:footer>
+            <p>Here's some contact info</p>
+        </template>
+    </base-layout>
+    <p>v-slot 只能添加在一个 template 上 (只有一种例外情况)</p>
+
+
+
+    <h3>作用域插槽</h3>
+    <p>让插槽内容能够访问子组件中才有的数据</p>
+    <current-user>
+        <template v-slot:default="slotProps">
+            <!--访问子组件中user 的值-->
+            {{ slotProps.user.firstName }}
+        </template>
+    </current-user>
+
+
+
+    <h3>独占默认插槽的缩写方法</h3>
+    <current-user>
+        <template v-slot="slotProps">
+            <!--访问子组件中user 的值-->
+            {{ slotProps.user.firstName }}
+        </template>
+    </current-user>
+    <p>可以省略default</p>
+    <!-- 无效，会导致警告 -->
+    <current-user v-slot="slotProps">
+        {{ slotProps.user.firstName }}
+        <template v-slot:other="otherSlotProps">
+            slotProps is NOT available here
+        </template>
+    </current-user>
+    <p>注意默认插槽的缩写语法不能和具名插槽混用，因为它会导致作用域不明确,只要出现多个插槽，请始终为所有的插槽使用完整的基于 template 的语法</p>
+    <!--正确写法-->
+    <current-user>
+        <template v-slot:default="slotProps">
+            {{ slotProps.user.firstName }}
+        </template>
+
+        <template v-slot:other="otherSlotProps">
+            ...
+        </template>
+    </current-user>
+
+
+    <h3>解构插槽prop</h3>
+    <current-user v-slot="{ user }">
+        {{ user.firstName }}
+    </current-user>
+
+    <current-user v-slot="{ user: person }">
+        {{ person.firstName }}
+    </current-user>
+    <current-user v-slot="{ user = { firstName: 'Guest' } }">
+        {{ user.firstName }}
+    </current-user>
+
+
+    <h3>动态插槽名</h3>
+    <base-layout-two>
+        <template v-slot:[dynamicslotname]>
+            This is Me.
+        </template>
+    </base-layout-two>
+
+    <h3>具名插槽缩写</h3>
+    <base-layout>
+        <template #header>
+            <h1>Here might be a page title</h1>
+        </template>
+
+        <p>A paragraph for the main content.</p>
+        <p>And another one.</p>
+
+        <template #footer>
+            <p>Here's some contact info</p>
+        </template>
+    </base-layout>
+    <p> 有参数的时候必须始终使用明确插槽名 例：&lt current-user #default="{ user } &gt</p>
+
+    <h3>插槽 prop 允许我们将插槽转换为可复用的模板，这些模板可以基于输入的 prop 渲染出不同的内容</h3>
+    <todo-list v-bind:todos="todos">
+        <template v-slot:todo="{ todo }">
+            <span v-if="todo.isComplete">✓</span>
+            {{ todo.text }}
+        </template>
+    </todo-list>
+</div>
+</body>
+</html>
+<script>
+    var vm = new Vue({
+        el:"#vm",
+        data:{
+            dynamicslotname:'header',
+        }
+    })
+</script>

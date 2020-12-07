@@ -28,7 +28,7 @@
 <h3>v-for 里面使用对象</h3>
 <div id="v-for-object">
     <ul class="demo">
-        <li v-for="value in object">
+        <li v-for="value in object" :key="value.id">
             {{ value }}
         </li>
     </ul>

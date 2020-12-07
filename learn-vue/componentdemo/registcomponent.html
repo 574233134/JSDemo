@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件注册</title>
+    <script src="../vue.js"></script>
+    <script>
+        // 全局注册组件
+        Vue.component('component-a',{
+            template: '<div>A component</div>'
+        });
+
+        Vue.component('component-b',{
+            template: '<div>B component</div>'
+        });
+        Vue.component('component-c',{
+            template: '<div>C component</div>'
+        });
+    </script>
+</head>
+<body>
+<div id="app">
+    <component-a></component-a>
+    <component-b></component-b>
+    <component-c></component-c>
+</div>
+<div id="app2">
+    <component-d></component-d>
+    <component-e></component-e>
+</div>
+</body>
+<script>
+    new Vue({ el: '#app' })
+
+    // 局部注册组件
+    // 对于 components 对象中的每个属性来说，其属性名就是自定义元素的名字，其属性值就是这个组件的选项对象。
+    var ComponentD = { template: '<div>D component</div>'};
+    var ComponentE = { template: '<div>E component</div>'};
+    // 注意局部注册的组件在其子组件中不可用。例如，如果你希望 ComponentD 在 ComponentE 中可用，则你需要这样写：
+    var ComponentF = {
+        template: '<div>F component</div>',
+        components: {
+            'component-d':ComponentD
+        }
+    };
+    new Vue({
+        el: '#app2',
+        components: {
+            'component-d': ComponentD,
+            'component-e': ComponentE,
+            'component-f': ComponentF
+        }
+    })
+</script>
+</html>

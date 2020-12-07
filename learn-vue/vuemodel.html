@@ -5,18 +5,163 @@
     <title>Vue v-module,数据绑定</title>
     <script src="vue.js"></script>
 </head>
-<body>
+<body style="padding-left: 30px;padding-bottom: 40px">
+<h3>基础用法</h3>
+<p>v-model 指令在表单<xmp><input>、<textarea> 及 <select> </xmp> 元素上创建双向数据绑定。它会根据控件类型自动选取正确的方法来更新元素。</p>
 <div id="app-6">
-    <p>{{ message }}</p>
-    <input v-model="message">
+    <h3>文本</h3>
+    <input v-model="message" placeholder="edit me">
+    <p>Message is: {{ message }}</p>
+
+    <h3>多行文本</h3>
+    <span>Multiline message is:</span>
+    <p style="white-space: pre-line;">{{ message }}</p>
+    <br>
+    <textarea v-model="message" placeholder="add multiple lines"></textarea>
+    <p>注:在文本区域使用插值并不会生效，应用 v-model 来代替。</p>
+
+    <h3>复选框</h3>
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+    <p>多个复选框，绑定到同一个数组：</p>
+    <div>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+    </div>
+    <h3>单选按钮</h3>
+    <div id="example-4">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>Picked: {{ picked }}</span>
+    </div>
 </div>
+<h3>选择框</h3>
+<p>单选：</p>
+<div id="example-5">
+    <select v-model="selected">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+</div>
+<p>多选时 (绑定到一个数组)：</p>
+<div id="example-6">
+    <select v-model="selected" multiple style="width: 50px;">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selected }}</span>
+</div>
+<p>用 v-for 渲染的动态选项：</p>
+<div id="example-7">
+    <select v-model="selected">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.msg }}
+        </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+</div>
+
+<h3>值绑定</h3>
+<div id="example-8">
+    <!-- 当选中时，`picked` 为字符串 "a" -->
+    <input type="radio" v-model="picked" value="a">
+
+    <!-- `toggle` 为 true 或 false -->
+    <input type="checkbox" v-model="toggle">
+
+    <!-- 当选中第一个选项时，`selected` 为字符串 "abc" -->
+    <select v-model="selected">
+        <option value="abc">ABC</option>
+    </select>
+
+    <input
+            type="checkbox"
+            v-model="toggleValue"
+            true-value="yes"
+            false-value="no"
+    >
+    <br/>
+    <h3>修饰符</h3>
+    <h4>修饰符lazy</h4>
+    <p>.lazy修饰符修改input触发为change触发</p>
+    <input v-model.lazy="msg" >
+    <span>{{msg}}</span>
+    <br/>
+    <h4>修饰符number</h4>
+    <p>.number修饰符可以将返回结果自动转化为Number类型，否则就是String类型</p>
+    <input v-model.number="age" type="number">
+    <br/>
+    <h4>修饰符trim</h4>
+    <p>.trim过滤首尾空格符</p>
+    <input v-model.trim="msg2">
+    <span>{{msg2}}</span>
+</div>
+
 </body>
 <script>
     var app6 = new Vue({
         el: '#app-6',
         data: {
-            message: 'Hello Vue!'
+            message: 'Hello Vue!',
+            checked:false,
+            checkedNames:[],
+            picked: ''
         }
+    });
+
+    new Vue({
+        el: '#example-5',
+        data: {
+            selected: ''
+        }
+    });
+
+    new Vue({
+        el: '#example-6',
+        data: {
+            selected: []
+        }
+    });
+
+    new Vue({
+        el: '#example-7',
+        data: {
+            selected: 'A',
+            options: [
+                { msg: 'One', value: 'A' },
+                { msg: 'Two', value: 'B' },
+                { msg: 'Three', value: 'C' }
+            ]
+        }
+    });
+    var vm8=new Vue({
+        el: '#example-8',
+        data: {
+            picked: '',
+            toggle:true,
+            selected:'',
+            toggleValue:'',
+            msg:'',
+            age:0,
+            msg2:''
+        },
+
     })
+
 </script>
 </html>

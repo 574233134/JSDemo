@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fa519fb3-ffb8-479a-9f00-e251edf14da4" name="Default Changelist" comment="">
+    <list default="true" id="7923132d-9cea-46b0-90f0-a0c76a94f89a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/../Demo/index.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Demo/jquery.searchableSelect.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Demo/searchableSelect.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Demo/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/canvas.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../dartTest/helloword.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../json/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../json/package.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../learn-vue/animated/bounce.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../learn-vue/animated/cell.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../learn-vue/animated/component-fade.css" afterDir="false" />
@@ -44,6 +50,7 @@
       <change beforePath="$PROJECT_DIR$/../learn-vue/hello.html" beforeDir="false" afterPath="$PROJECT_DIR$/../learn-vue/hello.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../learn-vue/vuemodel.html" beforeDir="false" afterPath="$PROJECT_DIR$/../learn-vue/vuemodel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../learn-vue/vueonuse.html" beforeDir="false" afterPath="$PROJECT_DIR$/../learn-vue/vueonuse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mytoast/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mytoast/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -55,103 +62,68 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FUSProjectUsageTrigger">
-    <session id="-1977906959">
+    <session id="886076791">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
-          <entry key="project.open.time.0" value="5" />
-          <entry key="project.open.time.1" value="4" />
-          <entry key="project.open.time.5" value="2" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="2" />
-          <entry key="html" value="2" />
-          <entry key="js" value="4" />
+          <entry key="html" value="1" />
+          <entry key="js" value="1" />
+          <entry key="png" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="2" />
-          <entry key="HTML" value="2" />
-          <entry key="JavaScript" value="4" />
+          <entry key="HTML" value="1" />
+          <entry key="Image" value="2" />
+          <entry key="JavaScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="6" />
-          <entry key="html" value="103" />
-          <entry key="js" value="73" />
+          <entry key="html" value="162" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="6" />
-          <entry key="HTML" value="103" />
-          <entry key="JavaScript" value="73" />
+          <entry key="HTML" value="162" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/canvas.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
+              <folding>
+                <element signature="n#style#0;n#img#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/toast.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-            </state>
-          </provider>
+        <entry file="file://$USER_HOME$/Desktop/wx/WAWorker.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/animate.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="10" selection-end-line="86" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/1.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/toast.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2261">
-              <caret line="119" column="23" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1349">
-              <caret line="71" column="22" lean-forward="true" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
-              <folding>
-                <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jquery.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46284">
-              <caret line="2436" column="3" selection-start-line="2436" selection-start-column="3" selection-end-line="2436" selection-end-column="3" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/2.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -159,21 +131,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>fadeOut</find>
-      <find>translateInfo</find>
-      <find>fadeInUp</find>
-      <find>showtoastFromDocument</find>
-      <find>showtoastFromDivbottom</find>
-      <find>showMessage</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -181,12 +141,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/jquery.js" />
-        <option value="$PROJECT_DIR$/animate.css" />
-        <option value="$PROJECT_DIR$/toast.css" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/toast.js" />
-        <option value="$PROJECT_DIR$/searchbar.html" />
+        <option value="$PROJECT_DIR$/canvas.html" />
       </list>
     </option>
   </component>
@@ -197,9 +152,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="398" />
-    <option name="y" value="100" />
-    <option name="width" value="1488" />
+    <option name="x" value="198" />
+    <option name="y" value="23" />
+    <option name="width" value="1353" />
     <option name="height" value="940" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -208,29 +163,29 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="mytoast" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mytoast" type="462c0819:PsiDirectoryNode" />
+              <item name="canvas" type="b2602c69:ProjectViewProjectNode" />
+              <item name="canvas" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -251,34 +206,24 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fa519fb3-ffb8-479a-9f00-e251edf14da4" name="Default Changelist" comment="" />
-      <created>1570675315693</created>
+      <changelist id="7923132d-9cea-46b0-90f0-a0c76a94f89a" name="Default Changelist" comment="" />
+      <created>1591703433947</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570675315693</updated>
-      <workItem from="1570675316845" duration="1253000" />
-      <workItem from="1570690406169" duration="2084000" />
-      <workItem from="1570699337602" duration="297000" />
-      <workItem from="1570699806767" duration="3839000" />
-      <workItem from="1570783694648" duration="737000" />
-      <workItem from="1571036015163" duration="1000" />
-      <workItem from="1571036027176" duration="9000" />
-      <workItem from="1571036065647" duration="942000" />
-      <workItem from="1571797502027" duration="1400000" />
-      <workItem from="1571899924137" duration="13000" />
-      <workItem from="1571899940333" duration="1000" />
-      <workItem from="1583291491332" duration="123000" />
+      <updated>1591703433947</updated>
+      <workItem from="1591703435292" duration="1868000" />
+      <workItem from="1591705634900" duration="313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10699000" />
+    <option name="totallyTimeSpent" value="2181000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="398" y="100" width="1488" height="940" extended-state="0" />
+    <frame x="198" y="23" width="1353" height="940" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24948876" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -303,66 +248,25 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/toast.js</url>
-          <line>121</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/iBiuServer/app/assets/javascripts/toast.js" />
-    <entry file="file://$PROJECT_DIR$/searchbar.html" />
-    <entry file="file://$USER_HOME$/Downloads/toast/toastr.js" />
-    <entry file="file://$PROJECT_DIR$/animate.css">
+    <entry file="file://$PROJECT_DIR$/canvas.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="10" selection-end-line="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toast.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2261">
-          <caret line="119" column="23" selection-start-line="119" selection-start-column="23" selection-end-line="119" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jquery.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46284">
-          <caret line="2436" column="3" selection-start-line="2436" selection-start-column="3" selection-end-line="2436" selection-end-column="3" />
+        <state relative-caret-position="494">
+          <caret line="26" column="44" lean-forward="true" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1349">
-          <caret line="71" column="22" lean-forward="true" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/1.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/toast.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/wx/WAWorker.js">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

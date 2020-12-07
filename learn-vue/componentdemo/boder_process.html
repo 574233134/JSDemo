@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边界处理</title>
+    <script src="../vue.js"></script>
+    <script>
+        var ChildComponent = {
+            data(){
+                return{
+                    msg:'',
+                    rootMsg:''
+                }
+            },
+            template:`
+                    <div class="child">
+    <h3>我是子组件</h3>
+    <p>
+      <button v-on:click="showRootData">显示根组件数据</button><span>{{rootMsg}}</span>
+    </p>
+    <p>
+      <button v-on:click="showParentData">显示父组件数据</button><span>{{msg}}</span>
+    </p>
+  </div>`,
+            methods:{
+                showParentData(){
+                    this.msg = this.$parent.parentMsg;
+                },
+                showRootData(){
+                    this.rootMsg = this.$root.rootMsg;
+                }
+            }
+        };
+        Vue.component('parent-component', {
+            template: `
+            <div class="parent">
+    <h3>我是父组件</h3>
+    <input v-model="parentMsg">
+    <p>{{parentMsg}}</p>
+    <child-component></child-component>
+  </div>`,
+            data(){
+                return{
+                    parentMsg:'我是父组件的数据'
+                }
+            },
+            components:{
+                'child-component':ChildComponent
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="demo">
+    <h3>我是根组件</h3>
+    <input v-model="rootMsg">
+    <p>{{rootMsg}}</p>
+    <parent-component>
+    </parent-component>
+</div>
+
+</body>
+</html>
+<script>
+    var vm= new Vue({
+        el:'#demo',
+        data: {
+            // 父组件实例
+            rootMsg: '根组件数据'
+        }
+    })
+</script>

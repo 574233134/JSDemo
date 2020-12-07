@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渲染函数 & JSX</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+
+<div id="render_demo">
+    <anchored-heading :level="3">reder 基础使用</anchored-heading>
+    <anchored-heading :level="4">Hello world!</anchored-heading>
+    <anchored-heading :level="5">Hello world!</anchored-heading>
+    <anchored-heading :level="6">Hello world!</anchored-heading>
+    <anchored-heading2 :level="1">Hello world!</anchored-heading2>
+</div>
+
+
+<h3> 虚拟节点 </h3>
+<p>Vue 通过建立一个虚拟 DOM 来追踪自己要如何改变真实 DOM。请仔细看这行代码：</p>
+<p style="background-color: #f0f0f0; width: 50%;height: 60px; padding-left: 20px;padding-top: 20px">return createElement('h1', this.blogTitle)</p>
+<p>它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，包括及其子节点的描述信息。我们把这样的节点描述为“虚拟节点 (virtual node)”，也常简写它为“VNode”。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。</p>
+
+<h3>使用 JavaScript 代替模板功能</h3>
+
+
+
+</body>
+</html>
+
+
+<script>
+    Vue.component('anchored-heading', {
+        render: function (createElement) {
+            return createElement(
+                'h' + this.level,   // 标签名称
+                this.$slots.default // 子节点数组
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    });
+    var getChildrenTextContent = function (children) {
+        return children.map(function (node) {
+            return node.children
+                ? getChildrenTextContent(node.children)
+                : node.text
+        }).join('')
+    };
+
+    Vue.component('anchored-heading2', {
+        render: function (createElement) {
+            // 创建 kebab-case 风格的 ID
+            var headingId = getChildrenTextContent(this.$slots.default)
+                .toLowerCase()
+                .replace(/\W+/g, '-')
+                .replace(/(^-|-$)/g, '')
+
+            return createElement(
+                'h' + this.level,
+                [
+                    createElement('a', {
+                        attrs: {
+                            name: headingId,
+                            href: '#' + headingId
+                        }
+                    }, this.$slots.default)
+                ]
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    });
+
+
+    new Vue({
+        el:"#render_demo"
+    });
+
+
+</script>

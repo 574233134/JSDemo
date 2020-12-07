@@ -1,0 +1,45 @@
+{
+  "canvasId": 38634676,
+  "reserve": false,
+  "actions": [
+    {
+      "method": "setFillStyle",
+      "data": [
+        "normal",
+        [
+          255,
+          0,
+          0,
+          255
+        ]
+      ]
+    },
+    {
+      "method": "fillPath",
+      "data": [
+        {
+          "method": "rect",
+          "data": [
+            0,
+            0,
+            300,
+            150
+          ]
+        },
+        {
+          "method": "closePath",
+          "data": []
+        }
+      ]
+    },
+    {
+      "method": "clearRect",
+      "data": [
+        20,
+        20,
+        100,
+        50
+      ]
+    }
+  ]
+}

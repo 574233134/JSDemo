@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>混入</title>
+    <script src="../vue.js"></script>
+</head>
+<body>
+<h3> 基础 </h3>
+<p>查看控制台是否输出 ：hello from mixin （创建Component 的时候会自动输出）</p>
+<h3> 选项合并 </h3>
+<p> 数据对象在内部会进行递归合并，并在发生冲突时以组件数据优先。</p>
+<p> 尝试输出vm.foo() 、 vm.bar()、 vm.conflicting()</p>
+<h3> 全局混入 </h3>
+<p>混入也可以进行全局注册。使用时格外小心！一旦使用全局混入，它将影响每一个之后创建的 Vue 实例。使用恰当时，这可以用来为自定义选项注入处理逻辑。</p>
+<h3> 自定义选项合并策略 </h3>
+</body>
+</html>
+<script>
+    // 定义一个混入对象
+    var myMixin = {
+        created: function () {
+            this.hello()
+        },
+        methods: {
+            hello: function () {
+                console.log('hello from mixin!')
+            }
+        }
+    }
+
+    // 定义一个使用混入对象的组件
+    var Component = Vue.extend({
+        mixins: [myMixin]
+    })
+
+    var component = new Component() // => "hello from mixin!"
+
+    var mixin = {
+        data: function () {
+            return {
+                message: 'hello',
+                foo: 'abc'
+            }
+        }
+    }
+
+    new Vue({
+        mixins: [mixin],
+        data: function () {
+            return {
+                message: 'goodbye',
+                bar: 'def'
+            }
+        },
+        created: function () {
+            console.log(this.$data)
+            // => { message: "goodbye", foo: "abc", bar: "def" }
+        }
+    });
+
+    // 同名钩子函数将合并为一个数组，因此都将被调用。另外，混入对象的钩子将在组件自身钩子之前调用。
+    var mixin2 = {
+        created: function () {
+            console.log('混入对象的钩子被调用')
+        }
+    };
+
+    new Vue({
+        mixins: [mixin2],
+        created: function () {
+            console.log('组件钩子被调用')
+        }
+    });
+
+
+    // 值为对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。两个对象键名冲突时，取组件对象的键值对。
+    // 注意：Vue.extend() 也使用同样的策略进行合并。
+    var mixin3 = {
+        methods: {
+            foo: function () {
+                console.log('foo')
+            },
+            conflicting: function () {
+                console.log('from mixin')
+            }
+        }
+    };
+
+    var vm = new Vue({
+        mixins: [mixin3],
+        methods: {
+            bar: function () {
+                console.log('bar')
+            },
+            conflicting: function () {
+                console.log('from self')
+            }
+        }
+    });
+
+
+    // 全局混入
+    Vue.mixin({
+        created: function () {
+            var myOption = this.$options.myOption
+            if (myOption) {
+                console.log(myOption)
+            }
+        }
+    })
+
+    new Vue({
+        myOption: 'hello!'
+    });
+
+    const merge = Vue.config.optionMergeStrategies.computed
+    Vue.config.optionMergeStrategies.vuex = function (toVal, fromVal) {
+        if (!toVal) return fromVal
+        if (!fromVal) return toVal
+        return {
+            getters: merge(toVal.getters, fromVal.getters),
+            state: merge(toVal.state, fromVal.state),
+            actions: merge(toVal.actions, fromVal.actions)
+        }
+    }
+</script>

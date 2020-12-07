@@ -1,0 +1,6 @@
+.with-mode-fade-enter-active, .with-mode-fade-leave-active {
+    transition: opacity .5s
+}
+.with-mode-fade-enter, .with-mode-fade-leave-active {
+    opacity: 0
+}

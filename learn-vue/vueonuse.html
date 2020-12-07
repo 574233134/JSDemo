@@ -3,8 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <title>事件处理</title>
+    <script src="vue.js"></script>
 </head>
 <body>
+<h3>监听事件</h3>
+<div id="example-1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</div>
 
+<h3>事件处理方法</h3>
+<div id="example-2">
+    <!-- `greet` 是在下面定义的方法名 -->
+    <button v-on:click="greet">Greet</button>
+</div>
+
+<h3>内联处理器中的方法</h3>
+<div id="example-3">
+    <button v-on:click="say('hi')">Say hi</button>
+    <button v-on:click="say('what')">Say what</button>
+    <p>有时也需要在内联语句处理器中访问原始的 DOM 事件。可以用特殊变量 $event 把它传入方法：</p>
+    <button v-on:click="warn('Form cannot be submitted yet.', $event)">
+        Submit
+    </button>
+</div>
+
+<h3>事件修饰符</h3>
+<p>.stop  .prevent  .capture  .self  .once  .passive</p>
 </body>
+<div id="example-4">
+    <!-- 阻止单击事件继续传播 -->
+    <a v-on:click.stop="doThis">阻止单击事件继续传</a>
+
+    <!-- 提交事件不再重载页面 -->
+    <form v-on:submit.prevent="onSubmit">提交事件不再重载页面</form>
+
+    <!-- 修饰符可以串联 -->
+    <a v-on:click.stop.prevent="doThat">修饰符可以串联</a>
+
+    <!-- 只有修饰符 -->
+    <form v-on:submit.prevent>只有修饰符</form>
+
+    <!-- 添加事件监听器时使用事件捕获模式 -->
+    <!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 -->
+    <div v-on:click.capture="doThis">添加事件监听器时使用事件捕获模式</div>
+
+    <!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+    <!-- 即事件不是从内部元素触发的 -->
+    <div v-on:click.self="doThat">只当在 event.target 是当前元素自身时触发处理函数</div>
+
+    <!-- 点击事件将只会触发一次 -->
+    <a v-on:click.once="doThis">点击事件将只会触发一次</a>
+
+    <!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+    <!-- 而不会等待 `onScroll` 完成  -->
+    <!-- 这其中包含 `event.preventDefault()` 的情况 -->
+    <div v-on:scroll.passive="onScroll">...</div>
+    <p style="color: brown">使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 v-on:click.prevent.self 会阻止所有的点击，而 v-on:click.self.prevent 只会阻止对元素自身的点击。</p>
+</div>
+
+<script>
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            counter: 0
+        }
+    })
+
+    var example2 = new Vue({
+        el: '#example-2',
+        data: {
+            name: 'Vue.js'
+        },
+        // 在 `methods` 对象中定义方法
+        methods: {
+            greet: function (event) {
+                // `this` 在方法里指向当前 Vue 实例
+                alert('Hello ' + this.name + '!')
+                // `event` 是原生 DOM 事件
+                if (event) {
+                    alert(event.target.tagName)
+                }
+            }
+        }
+    })
+
+    var example3 = new Vue({
+        el: '#example-3',
+        methods: {
+            say: function (message) {
+                alert(message)
+            },
+            warn: function (message, event) {
+                // 现在我们可以访问原生事件对象
+                if (event) event.preventDefault()
+                alert(message)
+            }
+        }
+    })
+
+    var example4 = new Vue({
+        el: '#example-4',
+        methods: {
+            doThis:function () {
+                alert('dothis')
+            }
+        }
+    })
+
+</script>
 </html>

@@ -1,0 +1,29 @@
+{
+  "canvasId": 38634676,
+  "reserve": false,
+  "actions": [
+    {
+      "method": "strokePath",
+      "data": [
+        {
+          "method": "moveTo",
+          "data": [
+            20,
+            20
+          ]
+        },
+        {
+          "method": "bezierCurveTo",
+          "data": [
+            20,
+            100,
+            200,
+            100,
+            200,
+            20
+          ]
+        }
+      ]
+    }
+  ]
+}
